@@ -324,234 +324,286 @@ public void doPost (HttpServletRequest request, HttpServletResponse response)
 }
 
 
-private float convertF2C (String FAsStr)
+public static float convertF2C (String FAsStr)
 {  // Convert farenheit to celsius
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf(FAsStr).floatValue());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) ( ( (num1-32.0) * 5.0) / 9.0);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return (num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf(FAsStr).floatValue());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) ( ( (num1-32.0) * 5.0) / 9.0);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return (num2);
 }
 
-private float convertC2F (String CAsStr)
+public static float convertC2F (String CAsStr)
 {  // Convert celsius to farenheit
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (CAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) ( (num1 * 9.0 / 5.0) + 32.0);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (CAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) ( (num1 * 9.0 / 5.0) + 32.0);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-// small distance
-private float convertIn2Cm (String inAsStr)
+//small distance
+public static float convertIn2Cm (String inAsStr)
 {  // Convert inches to centimeters
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (inAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 * 2.54);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (inAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 * 2.54);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-private float convertCm2In (String cmAsStr)
+public static float convertCm2In (String cmAsStr)
 {  // Convert centimeters to inches
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (cmAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 * 0.3937);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (cmAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 * 0.3937);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-// medium distance
-private float convertF2M (String ftAsStr)
+//medium distance
+public static float convertF2M (String ftAsStr)
 {  // Convert feet to meters
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (ftAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 * 0.3048);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (ftAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 * 0.3048);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-private float convertM2F (String mAsStr)
+public static float convertM2F (String mAsStr)
 {  // Convert meters to feet
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (mAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 / 0.3048);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (mAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 / 0.3048);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-// large distance
-private float convertM2K (String miAsStr)
+//large distance
+public static float convertM2K (String miAsStr)
 {  // Convert miles to kilometers
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (miAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 * 1.609);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (miAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 * 1.609);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-private float convertK2M (String kmAsStr)
+public static float convertK2M (String kmAsStr)
 {  // Convert kilometers to miles
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (kmAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 * 0.6214);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (kmAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 * 0.6214);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-// volume
-private float convertG2L (String galAsStr)
+//volume
+public static float convertG2L (String galAsStr)
 {  // Convert gallons to liters
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (galAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 * 3.785);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (galAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 * 3.785);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-private float convertL2G (String LAsStr)
+public static float convertL2G (String LAsStr)
 {  // Convert liters to gallons
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (LAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 / 3.785);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (LAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 / 3.785);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-// small weight
-private float convertOz2G (String ozAsStr)
+//small weight
+public static float convertOz2G (String ozAsStr)
 {  // Convert ounces to grams
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (ozAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 * 28.35);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (ozAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 * 28.35);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-private float convertG2Oz (String gAsStr)
+public static float convertG2Oz (String gAsStr)
 {  // Convert grams to ounces
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (gAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 / 28.35);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (gAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 / 28.35);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-// medium weight
-private float convertLb2K (String lbAsStr)
+//medium weight
+public static float convertLb2K (String lbAsStr)
 {  // Convert pounds to kilograms
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (lbAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 * 0.4536);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (lbAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 * 0.4536);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
 
-private float convertK2Lb (String kgAsStr)
+public static float convertK2Lb (String kgAsStr)
 {  // Convert kilograms to pounds
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
-   num1 = (Float.valueOf (kgAsStr).floatValue ());
-   n    = Math.round(num1 * (float)100.0);
-   num1 = (float) (n / (float)100.0);
-   // Convert
-   num2 = (float) (num1 * 2.205);
-   // Back to 2 digits
-   n    = Math.round(num2 * (float)100.0);
-   num2 = (float) (n / (float)100.0);
-   return(num2);
+	float num1, num2; // temporary variables
+	int n; // temporary variable
+	// Round to 2 digits past decimal
+	num1 = (Float.valueOf (kgAsStr).floatValue ());
+	n    = Math.round(num1 * (float)100.0);
+	num1 = (float) (n / (float)100.0);
+	// Convert
+	num2 = (float) (num1 * 2.205);
+	// Back to 2 digits
+	n    = Math.round(num2 * (float)100.0);
+	num2 = (float) (n / (float)100.0);
+	return(num2);
 }
+
+	public static void main(String[] args) {
+
+		switch (args[0]) {
+	    case "F2C":
+	        System.out.println(convertF2C(args[1]));
+	        break;
+	    case "C2F":
+	        System.out.println(convertC2F(args[1]));
+	        break;
+	    case "In2Cm":
+	        System.out.println(convertIn2Cm(args[1]));
+	        break;
+	    case "Cm2In":
+	        System.out.println(convertCm2In(args[1]));
+	        break;
+	    case "F2M":
+	        System.out.println(convertF2M(args[1]));
+	        break;
+	    case "M2F":
+	        System.out.println(convertM2F(args[1]));
+	        break;
+	    case "M2K":
+	        System.out.println(convertM2K(args[1]));
+	        break;
+	    case "K2M":
+	        System.out.println(convertK2M(args[1]));
+	        break;
+	    case "G2L":
+	        System.out.println(convertG2L(args[1]));
+	        break;
+	    case "L2G":
+	        System.out.println(convertL2G(args[1]));
+	        break;
+	    case "Oz2G":
+	        System.out.println(convertOz2G(args[1]));
+	        break;
+	    case "G2Oz":
+	        System.out.println(convertG2Oz(args[1]));
+	        break;
+	    case "Lb2K":
+	        System.out.println(convertLb2K(args[1]));
+	        break;
+	    case "K2Lb":
+	        System.out.println(convertK2Lb(args[1]));
+	        break;
+	    default:
+	        System.out.println("Invalid command");
+	        break;
+		}
+
+	}
 
 }
