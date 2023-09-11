@@ -31,7 +31,7 @@ import java.lang.*;
 //
 // The possible IOException on the PrintWriter is thrown up.
 
-public class conversion extends HttpServlet
+public class Conversion extends HttpServlet
 {
 
 
@@ -323,8 +323,8 @@ public void doPost (HttpServletRequest request, HttpServletResponse response)
    out.close ();
 }
 
-
 public static float convertF2C (String FAsStr)
+
 {  // Convert farenheit to celsius
 	float num1, num2; // temporary variables
 	int n; // temporary variable
@@ -555,55 +555,93 @@ public static float convertK2Lb (String kgAsStr)
 }
 
 	public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
 
-		switch (args[0]) {
-	    case "F2C":
-	        System.out.println(convertF2C(args[1]));
-	        break;
-	    case "C2F":
-	        System.out.println(convertC2F(args[1]));
-	        break;
-	    case "In2Cm":
-	        System.out.println(convertIn2Cm(args[1]));
-	        break;
-	    case "Cm2In":
-	        System.out.println(convertCm2In(args[1]));
-	        break;
-	    case "F2M":
-	        System.out.println(convertF2M(args[1]));
-	        break;
-	    case "M2F":
-	        System.out.println(convertM2F(args[1]));
-	        break;
-	    case "M2K":
-	        System.out.println(convertM2K(args[1]));
-	        break;
-	    case "K2M":
-	        System.out.println(convertK2M(args[1]));
-	        break;
-	    case "G2L":
-	        System.out.println(convertG2L(args[1]));
-	        break;
-	    case "L2G":
-	        System.out.println(convertL2G(args[1]));
-	        break;
-	    case "Oz2G":
-	        System.out.println(convertOz2G(args[1]));
-	        break;
-	    case "G2Oz":
-	        System.out.println(convertG2Oz(args[1]));
-	        break;
-	    case "Lb2K":
-	        System.out.println(convertLb2K(args[1]));
-	        break;
-	    case "K2Lb":
-	        System.out.println(convertK2Lb(args[1]));
-	        break;
-	    default:
-	        System.out.println("Invalid command");
-	        break;
-		}
+        System.out.println("Welcome to conversion.java, type help for commands or exit to quit.");
+
+        String cmd = "";
+        String[] arguments;
+
+        //command line loop
+        while(!cmd.equals("exit")) {
+
+        //get inputs
+        cmd = input.nextLine();
+        arguments = cmd.split(" ");
+
+        switch (arguments[0]) {
+        case "help":
+            System.out.println("List of conversion commands:");
+            System.out.println("F2C # - Farenheight to Celcius");
+            System.out.println("C2F # - Celcius to Farenheight");
+            System.out.println("In2Cm # - Inches to Centimeters");
+            System.out.println("Cm2In # - Centimeters to Inches");
+            System.out.println("F2M # - Feet to Meters");
+            System.out.println("M2F # - Meters to Feet");
+            System.out.println("M2K # - Miles to Kilometers");
+            System.out.println("K2M # - Kilometers to Miles");
+            System.out.println("G2L # - Gallons to Liters");
+            System.out.println("L2G # - Liters to Gallons");
+            System.out.println("Oz2G # - Ounces to Grams");
+            System.out.println("G2Oz # - Grams to Ounces");
+            System.out.println("Lb2K # - Pounds to Kilograms");
+            System.out.println("K2Lb # - Kilograms to Pounds");
+            System.out.println("exit - Quit the program");
+            break;
+        case "F2C":
+            System.out.println(convertF2C(arguments[1]));
+            break;
+        case "C2F":
+            System.out.println(convertC2F(arguments[1]));
+            break;
+        case "In2Cm":
+            System.out.println(convertIn2Cm(arguments[1]));
+            break;
+        case "Cm2In":
+            System.out.println(convertCm2In(arguments[1]));
+            break;
+        case "F2M":
+            System.out.println(convertF2M(arguments[1]));
+            break;
+        case "M2F":
+            System.out.println(convertM2F(arguments[1]));
+            break;
+        case "M2K":
+            System.out.println(convertM2K(arguments[1]));
+            break;
+        case "K2M":
+            System.out.println(convertK2M(arguments[1]));
+            break;
+        case "G2L":
+            System.out.println(convertG2L(arguments[1]));
+            break;
+        case "L2G":
+            System.out.println(convertL2G(arguments[1]));
+            break;
+        case "Oz2G":
+            System.out.println(convertOz2G(arguments[1]));
+            break;
+        case "G2Oz":
+            System.out.println(convertG2Oz(arguments[1]));
+            break;
+        case "Lb2K":
+            System.out.println(convertLb2K(arguments[1]));
+            break;
+        case "K2Lb":
+            System.out.println(convertK2Lb(arguments[1]));
+            break;
+        case "exit":
+            System.out.println("Exiting the program.");
+            break;
+         default:
+            System.out.println("Invalid command, try again.");
+            break;
+         }
+   }
+
+   //cleanup scanner
+   input.close();
 
 	}
-
+    
 }
