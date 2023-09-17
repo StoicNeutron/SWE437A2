@@ -347,8 +347,8 @@ private static float RoundFirst(String str){
  */
 private static float RoundBack(float num2){
    int n;
-   n    = Math.round(num2 * (float)100.0);
-   return (float) (n / (float)100.0);
+   n    = Math.round(num2 * (float)10000.0);
+   return (float) (n / (float)10000.0);
 }
 private static float convertF2C (String FAsStr)
 {  // Convert farenheit to celsius
@@ -568,6 +568,8 @@ private static float convertS2H (String secAsString)
         String cmd = "";
         String[] arguments;
 
+        int decimalDigits = 2;
+
         //command line loop
         while(!cmd.equals("exit")) {
 
@@ -595,62 +597,74 @@ private static float convertS2H (String secAsString)
             System.out.println("H2S # - Hours to Seconds");
             System.out.println("S2H # - Seconds to Hours");
             System.out.println("exit - Quit the program");
+            System.out.println("\nAdditional options:");
+            System.out.println("decimal # - Set the number of digits past decimal point in result [0-4]");
             break;
         case "F2C":
-            System.out.println(convertF2C(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertF2C(arguments[1]));
             break;
         case "C2F":
-            System.out.println(convertC2F(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertC2F(arguments[1]));
             break;
         case "In2Cm":
-            System.out.println(convertIn2Cm(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertIn2Cm(arguments[1]));
             break;
         case "Cm2In":
-            System.out.println(convertCm2In(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertCm2In(arguments[1]));
             break;
         case "F2M":
-            System.out.println(convertF2M(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertF2M(arguments[1]));
             break;
         case "M2F":
-            System.out.println(convertM2F(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertM2F(arguments[1]));
             break;
         case "M2K":
-            System.out.println(convertM2K(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertM2K(arguments[1]));
             break;
         case "K2M":
-            System.out.println(convertK2M(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertK2M(arguments[1]));
             break;
         case "G2L":
-            System.out.println(convertG2L(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertG2L(arguments[1]));
             break;
         case "L2G":
-            System.out.println(convertL2G(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertL2G(arguments[1]));
             break;
         case "Oz2G":
-            System.out.println(convertOz2G(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertOz2G(arguments[1]));
             break;
         case "G2Oz":
-            System.out.println(convertG2Oz(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertG2Oz(arguments[1]));
             break;
         case "Lb2K":
-            System.out.println(convertLb2K(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertLb2K(arguments[1]));
             break;
         case "K2Lb":
-            System.out.println(convertK2Lb(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertK2Lb(arguments[1]));
             break;
         case "H2S":
-            System.out.println(convertH2S(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertH2S(arguments[1]));
             break;
         case "S2H":
-            System.out.println(convertS2H(arguments[1]));
+            System.out.printf("%." + decimalDigits + "f\n", convertS2H(arguments[1]));
             break;
         case "exit":
             System.out.println("Exiting the program.");
             break;
-         default:
+        case "decimal":
+            int num = Integer.parseInt(arguments[1]);
+            if (0 <= num && num <= 4) {
+                decimalDigits = num;
+                System.out.printf("Digits past decimal set to %d\n", decimalDigits);
+            }
+            else {
+                System.out.println("Invalid argument: integer value must be from 0 to 4");
+            }
+            break;
+        default:
             System.out.println("Invalid command, try again.");
             break;
-         }
+        }
    }
 
    //cleanup scanner
