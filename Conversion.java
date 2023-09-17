@@ -612,7 +612,7 @@ private static float convertH2S (String hrAsString)
  * @return Float output for hours
  */
 private static float convertS2H (String secAsString)
-{   // Convert seconds to hours
+{
     float num1, num2;
     num1 = Float.valueOf(secAsString).floatValue();
     // Convert using unrounded value
