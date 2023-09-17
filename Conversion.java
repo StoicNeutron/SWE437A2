@@ -9,8 +9,8 @@
         @version 2.1    January 2020
 ********************************************************************* */
 // Import Servlet Libraries
-import javax.servlet.*;
-import javax.servlet.http.*;
+//import javax.servlet.*;
+//import javax.servlet.http.*;
 
 // Import Java Libraries
 import java.io.*;
@@ -31,10 +31,10 @@ import java.lang.*;
 //
 // The possible IOException on the PrintWriter is thrown up.
 
-public class Conversion extends HttpServlet
+public class Conversion //extends HttpServlet
 {
 
-
+/*
 public void doGet (HttpServletRequest request, HttpServletResponse response)
    throws ServletException, IOException
 {  // Prints the form initially with no values
@@ -45,8 +45,9 @@ public void doGet (HttpServletRequest request, HttpServletResponse response)
    Properties newvals = new Properties ();
    PrintForm (response, newvals);
 }
+*/
 
-
+/*
 private void PrintHead (HttpServletResponse response)
    throws ServletException, IOException
 {
@@ -79,8 +80,9 @@ private void PrintHead (HttpServletResponse response)
    out.println ("Jeff Offutt and Ren Li");
    out.println ("<hr>");
 }
+*/
 
-
+/*
 private void PrintForm (HttpServletResponse response, Properties newvals)
    throws ServletException, IOException
 {
@@ -209,6 +211,7 @@ private void PrintForm (HttpServletResponse response, Properties newvals)
    out.println ("</html>");
    out.close ();
 }
+*/
 
 /** *****************************************************
  *  Overrides HttpServlet's doPost().
@@ -217,6 +220,7 @@ private void PrintForm (HttpServletResponse response, Properties newvals)
  *  The new values are printed in red (#FF0000).
 ********************************************************* */
 
+/*
 public void doPost (HttpServletRequest request, HttpServletResponse response)
    throws ServletException, IOException
 {
@@ -322,6 +326,7 @@ public void doPost (HttpServletRequest request, HttpServletResponse response)
 
    out.close ();
 }
+*/
 
 /**
  * Gets the float from the string and rounds it to 2 digits past the decimal.
