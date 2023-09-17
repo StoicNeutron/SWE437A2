@@ -340,331 +340,394 @@ private static float RoundFirst(String str){
    n    = Math.round(num1 * (float)100.0);
    return (float) (n / (float)100.0);
 }
+
 /**
- * 
- * @param num2
- * @return
+ * Takes a float and rounds it to 4 decimals
+ * @param num2 Float input argument
+ * @return Float output with 4 decimals
  */
 private static float RoundBack(float num2){
    int n;
    n    = Math.round(num2 * (float)10000.0);
    return (float) (n / (float)10000.0);
 }
+
+/**
+ * Converts farenheit to celsius
+ * @param FAsStr String input for farenheit
+ * @return Float output for celsius
+ */
 private static float convertF2C (String FAsStr)
-{  // Convert farenheit to celsius
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(FAsStr);
    // Convert
    num2 = (float) ( ( (num1-32.0) * 5.0) / 9.0);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return (num2);
 }
 
+/**
+ * Converts celsius to farenheit
+ * @param CAsStr String input for celcius
+ * @return Float output for farenheit
+ */
 private static float convertC2F (String CAsStr)
-{  // Convert celsius to farenheit
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(CAsStr);
    // Convert
    num2 = (float) ( (num1 * 9.0 / 5.0) + 32.0);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
-// small distance
+/**
+ * Converts inches to centimeters
+ * @param inAsStr String input for inches
+ * @return Float output for centimeters
+ */
 private static float convertIn2Cm (String inAsStr)
-{  // Convert inches to centimeters
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(inAsStr);
    // Convert
    num2 = (float) (num1 * 2.54);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
+/**
+ * Converts centimeters to inches
+ * @param cmAsStr String input for centimeters
+ * @return Float output for inches
+ */
 private static float convertCm2In (String cmAsStr)
-{  // Convert centimeters to inches
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(cmAsStr);
    // Convert
    num2 = (float) (num1 * 0.3937);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
-// medium distance
+/**
+ * Converts feet to meters
+ * @param ftAsStr String input for feet
+ * @return Float output for meters
+ */
 private static float convertF2M (String ftAsStr)
-{  // Convert feet to meters
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(ftAsStr);
    // Convert
    num2 = (float) (num1 * 0.3048);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
+/**
+ * Converts meters to feet
+ * @param mAsStr String input for meters
+ * @return Float output for feet
+ */
 private static float convertM2F (String mAsStr)
-{  // Convert meters to feet
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(mAsStr);
    // Convert
    num2 = (float) (num1 / 0.3048);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
-// large distance
+/**
+ * Converts miles to kilometers
+ * @param miAsStr String input for miles
+ * @return Float output for kilometers
+ */
 private static float convertM2K (String miAsStr)
-{  // Convert miles to kilometers
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(miAsStr);
    // Convert
    num2 = (float) (num1 * 1.609);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
+/**
+ * Converts kilometers to miles
+ * @param kmAsStr String input for kilometers
+ * @return Float output for miles
+ */
 private static float convertK2M (String kmAsStr)
-{  // Convert kilometers to miles
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(kmAsStr);
    // Convert
    num2 = (float) (num1 * 0.6214);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
-// volume
+/**
+ * Converts gallons to liters
+ * @param galAsStr String input for gallons
+ * @return Float output for liters
+ */
 private static float convertG2L (String galAsStr)
-{  // Convert gallons to liters
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(galAsStr);
    // Convert
    num2 = (float) (num1 * 3.785);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
+/**
+ * Converts liters to gallons
+ * @param LAsStr String input for liters
+ * @return Float output for gallons
+ */
 private static float convertL2G (String LAsStr)
-{  // Convert liters to gallons
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(LAsStr);
    // Convert
    num2 = (float) (num1 / 3.785);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
-// small weight
+/**
+ * Converts ounces to grams
+ * @param ozAsStr String input for ounces
+ * @return Float output for grams
+ */
 private static float convertOz2G (String ozAsStr)
-{  // Convert ounces to grams
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(ozAsStr);
    // Convert
    num2 = (float) (num1 * 28.35);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
+/**
+ * Converts grams to ounces
+ * @param gAsStr String input for grams
+ * @return Float output for ounches
+ */
 private static float convertG2Oz (String gAsStr)
-{  // Convert grams to ounces
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(gAsStr);
    // Convert
    num2 = (float) (num1 / 28.35);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
-// medium weight
+/**
+ * Converts pounds to kilograms
+ * @param lbAsStr String input for pounds
+ * @return Float output for kilograms
+ */
 private static float convertLb2K (String lbAsStr)
-{  // Convert pounds to kilograms
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(lbAsStr);
    // Convert
    num2 = (float) (num1 * 0.4536);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
+/**
+ * Converts kilograms to pounds
+ * @param kgAsStr String input for kilograms
+ * @return Float output for pounds
+ */
 private static float convertK2Lb (String kgAsStr)
-{  // Convert kilograms to pounds
-   float num1, num2; // temporary variables
-   int n; // temporary variable
-   // Round to 2 digits past decimal
+{
+   float num1, num2;
+   // Round
    num1 = RoundFirst(kgAsStr);
    // Convert
    num2 = (float) (num1 * 2.205);
-   // Back to 2 digits
+   // Round again
    num2 = RoundBack(num2);
    return(num2);
 }
 
+/**
+ * Converts hours to seconds
+ * @param hrAsString String input for hours
+ * @return Float output for seconds
+ */
 private static float convertH2S (String hrAsString)
-{   // Convert hours to seconds
+{
     float num1, num2;
     num1 = Float.valueOf(hrAsString).floatValue();
-    // Convert
+    // Convert using unrounded value
     num2 = (float) (num1 * 60 * 60);
-    // Back to 2 digits
+    // Round
     num2 = RoundBack(num2);
     return(num2);
 }
 
+/**
+ * Converts seconds to hours
+ * @param secAsString String input for seconds
+ * @return Float output for hours
+ */
 private static float convertS2H (String secAsString)
 {   // Convert seconds to hours
     float num1, num2;
     num1 = Float.valueOf(secAsString).floatValue();
-    // Convert
+    // Convert using unrounded value
     num2 = (float) ((num1 / 60f) / 60f);
     // Back to 2 digits
     num2 = RoundBack(num2);
     return(num2);
 }
 
-	public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+public static void main(String[] args) {
+      Scanner input = new Scanner(System.in);
 
-        System.out.println("Welcome to conversion.java, type help for commands or exit to quit.");
+      System.out.println("Welcome to conversion.java, type help for commands or exit to quit.");
 
-        String cmd = "";
-        String[] arguments;
+      String cmd = "";
+      String[] arguments;
 
-        int decimalDigits = 2;
+      //default digits to round to
+      int decimalDigits = 2;
 
-        //command line loop
-        while(!cmd.equals("exit")) {
+      //command line loop
+      while(!cmd.equals("exit")) {
 
-        //get inputs
-        cmd = input.nextLine();
-        arguments = cmd.split(" ");
+      //get inputs
+      cmd = input.nextLine();
+      arguments = cmd.split(" ");
 
-        switch (arguments[0]) {
-        case "help":
-            System.out.println("List of conversion commands:");
-            System.out.println("F2C # - Farenheight to Celcius");
-            System.out.println("C2F # - Celcius to Farenheight");
-            System.out.println("In2Cm # - Inches to Centimeters");
-            System.out.println("Cm2In # - Centimeters to Inches");
-            System.out.println("F2M # - Feet to Meters");
-            System.out.println("M2F # - Meters to Feet");
-            System.out.println("M2K # - Miles to Kilometers");
-            System.out.println("K2M # - Kilometers to Miles");
-            System.out.println("G2L # - Gallons to Liters");
-            System.out.println("L2G # - Liters to Gallons");
-            System.out.println("Oz2G # - Ounces to Grams");
-            System.out.println("G2Oz # - Grams to Ounces");
-            System.out.println("Lb2K # - Pounds to Kilograms");
-            System.out.println("K2Lb # - Kilograms to Pounds");
-            System.out.println("H2S # - Hours to Seconds");
-            System.out.println("S2H # - Seconds to Hours");
-            System.out.println("exit - Quit the program");
-            System.out.println("\nAdditional options:");
-            System.out.println("decimal # - Set the number of digits past decimal point in result [0-4]");
-            break;
-        case "F2C":
-            System.out.printf("%." + decimalDigits + "f\n", convertF2C(arguments[1]));
-            break;
-        case "C2F":
-            System.out.printf("%." + decimalDigits + "f\n", convertC2F(arguments[1]));
-            break;
-        case "In2Cm":
-            System.out.printf("%." + decimalDigits + "f\n", convertIn2Cm(arguments[1]));
-            break;
-        case "Cm2In":
-            System.out.printf("%." + decimalDigits + "f\n", convertCm2In(arguments[1]));
-            break;
-        case "F2M":
-            System.out.printf("%." + decimalDigits + "f\n", convertF2M(arguments[1]));
-            break;
-        case "M2F":
-            System.out.printf("%." + decimalDigits + "f\n", convertM2F(arguments[1]));
-            break;
-        case "M2K":
-            System.out.printf("%." + decimalDigits + "f\n", convertM2K(arguments[1]));
-            break;
-        case "K2M":
-            System.out.printf("%." + decimalDigits + "f\n", convertK2M(arguments[1]));
-            break;
-        case "G2L":
-            System.out.printf("%." + decimalDigits + "f\n", convertG2L(arguments[1]));
-            break;
-        case "L2G":
-            System.out.printf("%." + decimalDigits + "f\n", convertL2G(arguments[1]));
-            break;
-        case "Oz2G":
-            System.out.printf("%." + decimalDigits + "f\n", convertOz2G(arguments[1]));
-            break;
-        case "G2Oz":
-            System.out.printf("%." + decimalDigits + "f\n", convertG2Oz(arguments[1]));
-            break;
-        case "Lb2K":
-            System.out.printf("%." + decimalDigits + "f\n", convertLb2K(arguments[1]));
-            break;
-        case "K2Lb":
-            System.out.printf("%." + decimalDigits + "f\n", convertK2Lb(arguments[1]));
-            break;
-        case "H2S":
-            System.out.printf("%." + decimalDigits + "f\n", convertH2S(arguments[1]));
-            break;
-        case "S2H":
-            System.out.printf("%." + decimalDigits + "f\n", convertS2H(arguments[1]));
-            break;
-        case "exit":
-            System.out.println("Exiting the program.");
-            break;
-        case "decimal":
-            int num = Integer.parseInt(arguments[1]);
-            if (0 <= num && num <= 4) {
-                decimalDigits = num;
-                System.out.printf("Digits past decimal set to %d\n", decimalDigits);
-            }
-            else {
-                System.out.println("Invalid argument: integer value must be from 0 to 4");
-            }
-            break;
-        default:
-            System.out.println("Invalid command, try again.");
-            break;
-        }
+      switch (arguments[0]) {
+      case "help":
+         System.out.println("List of conversion commands:");
+         System.out.println("F2C # - Farenheit to Celcius");
+         System.out.println("C2F # - Celcius to Farenheit");
+         System.out.println("In2Cm # - Inches to Centimeters");
+         System.out.println("Cm2In # - Centimeters to Inches");
+         System.out.println("F2M # - Feet to Meters");
+         System.out.println("M2F # - Meters to Feet");
+         System.out.println("M2K # - Miles to Kilometers");
+         System.out.println("K2M # - Kilometers to Miles");
+         System.out.println("G2L # - Gallons to Liters");
+         System.out.println("L2G # - Liters to Gallons");
+         System.out.println("Oz2G # - Ounces to Grams");
+         System.out.println("G2Oz # - Grams to Ounces");
+         System.out.println("Lb2K # - Pounds to Kilograms");
+         System.out.println("K2Lb # - Kilograms to Pounds");
+         System.out.println("H2S # - Hours to Seconds");
+         System.out.println("S2H # - Seconds to Hours");
+         System.out.println("exit - Quit the program");
+         System.out.println("\nAdditional options:");
+         System.out.println("decimal # - Set the number of digits past decimal point in result [0-4]");
+         break;
+      case "F2C":
+         System.out.printf("%." + decimalDigits + "f\n", convertF2C(arguments[1]));
+         break;
+      case "C2F":
+         System.out.printf("%." + decimalDigits + "f\n", convertC2F(arguments[1]));
+         break;
+      case "In2Cm":
+         System.out.printf("%." + decimalDigits + "f\n", convertIn2Cm(arguments[1]));
+         break;
+      case "Cm2In":
+         System.out.printf("%." + decimalDigits + "f\n", convertCm2In(arguments[1]));
+         break;
+      case "F2M":
+         System.out.printf("%." + decimalDigits + "f\n", convertF2M(arguments[1]));
+         break;
+      case "M2F":
+         System.out.printf("%." + decimalDigits + "f\n", convertM2F(arguments[1]));
+         break;
+      case "M2K":
+         System.out.printf("%." + decimalDigits + "f\n", convertM2K(arguments[1]));
+         break;
+      case "K2M":
+         System.out.printf("%." + decimalDigits + "f\n", convertK2M(arguments[1]));
+         break;
+      case "G2L":
+         System.out.printf("%." + decimalDigits + "f\n", convertG2L(arguments[1]));
+         break;
+      case "L2G":
+         System.out.printf("%." + decimalDigits + "f\n", convertL2G(arguments[1]));
+         break;
+      case "Oz2G":
+         System.out.printf("%." + decimalDigits + "f\n", convertOz2G(arguments[1]));
+         break;
+      case "G2Oz":
+         System.out.printf("%." + decimalDigits + "f\n", convertG2Oz(arguments[1]));
+         break;
+      case "Lb2K":
+         System.out.printf("%." + decimalDigits + "f\n", convertLb2K(arguments[1]));
+         break;
+      case "K2Lb":
+         System.out.printf("%." + decimalDigits + "f\n", convertK2Lb(arguments[1]));
+         break;
+      case "H2S":
+         System.out.printf("%." + decimalDigits + "f\n", convertH2S(arguments[1]));
+         break;
+      case "S2H":
+         System.out.printf("%." + decimalDigits + "f\n", convertS2H(arguments[1]));
+         break;
+      case "exit":
+         System.out.println("Exiting the program.");
+         break;
+      case "decimal":
+         int num = Integer.parseInt(arguments[1]);
+         if (0 <= num && num <= 4) {
+               decimalDigits = num;
+               System.out.printf("Digits past decimal set to %d\n", decimalDigits);
+         }
+         else {
+               System.out.println("Invalid argument: integer value must be from 0 to 4");
+         }
+         break;
+      default:
+         System.out.println("Invalid command, try again.");
+         break;
+      }
    }
 
    //cleanup scanner
