@@ -538,6 +538,28 @@ private static float convertK2Lb (String kgAsStr)
    return(num2);
 }
 
+private static float convertH2S (String hrAsString)
+{   // Convert hours to seconds
+    float num1, num2;
+    num1 = Float.valueOf(hrAsString).floatValue();
+    // Convert
+    num2 = (float) (num1 * 60 * 60);
+    // Back to 2 digits
+    num2 = RoundBack(num2);
+    return(num2);
+}
+
+private static float convertS2H (String secAsString)
+{   // Convert seconds to hours
+    float num1, num2;
+    num1 = Float.valueOf(secAsString).floatValue();
+    // Convert
+    num2 = (float) ((num1 / 60f) / 60f);
+    // Back to 2 digits
+    num2 = RoundBack(num2);
+    return(num2);
+}
+
 	public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -570,6 +592,8 @@ private static float convertK2Lb (String kgAsStr)
             System.out.println("G2Oz # - Grams to Ounces");
             System.out.println("Lb2K # - Pounds to Kilograms");
             System.out.println("K2Lb # - Kilograms to Pounds");
+            System.out.println("H2S # - Hours to Seconds");
+            System.out.println("S2H # - Seconds to Hours");
             System.out.println("exit - Quit the program");
             break;
         case "F2C":
@@ -613,6 +637,12 @@ private static float convertK2Lb (String kgAsStr)
             break;
         case "K2Lb":
             System.out.println(convertK2Lb(arguments[1]));
+            break;
+        case "H2S":
+            System.out.println(convertH2S(arguments[1]));
+            break;
+        case "S2H":
+            System.out.println(convertS2H(arguments[1]));
             break;
         case "exit":
             System.out.println("Exiting the program.");
