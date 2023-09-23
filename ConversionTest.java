@@ -2,10 +2,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-@Tag("unit test")
 class ConversionTest {
 
     // testing for normal behavior
@@ -24,68 +24,167 @@ class ConversionTest {
 
     @Test
     @DisplayName("12 inches is 30.48 centimeters")
-    void incheToCentimeter(){
+    void inchesToCentimeter(){
         assertEquals(30.48, Conversion.convertIn2Cm("12"), 0.01);
     }
 
     @Test
     @DisplayName("30.48 centimeters is 12 inches")
-    void centimeterToInche(){
+    void centimeterToInches(){
         assertEquals(12, Conversion.convertCm2In("30.48"), 0.01);
     }
 
     @Test
     @DisplayName("6 feet is 1.82 meters")
-    void feetToMeter(){
+    void feetToMeters(){
         assertEquals(1.82, Conversion.convertF2M("6"), 0.01);
     }
 
     @Test
     @DisplayName("1.82 meters is 6 feet")
-    void meterToFeet(){
+    void metersToFeet(){
         assertEquals(6, Conversion.convertM2F("1.82"), 0.1);
     }
 
     @Test
     @DisplayName("1 mile is 1.6 kilometers")
-    void mileToKilometer(){
+    void milesToKilometers(){
         assertEquals(1.6, Conversion.convertM2K("1"), 0.01);
     }
 
     @Test
     @DisplayName("1.6 kilometers is 1 mile")
-    void kilometerToMile(){
+    void kilometersToMiles(){
         assertEquals(1, Conversion.convertK2M("1.6"), 0.01);
     }
 
     @Test
     @DisplayName("1 gallon is 3.78 liters")
-    void gallonToLiter(){
+    void gallonsToLiters(){
         assertEquals(3.78, Conversion.convertG2L("1"), 0.01);
     }
 
-    // testing for emptyString and Null inputs
+    @Test
+    @DisplayName("3.78 liters is 1 gallon")
+    void litersToGallons(){
+        assertEquals(1, Conversion.convertL2G("3.78"), 0.01);
+    }
 
     @Test
-    @DisplayName("empty string and null input won't break the program")
-    void emptyStringAndNullCheck(){
-        assertDoesNotThrow(()->Conversion.convertF2C(null));
-        assertDoesNotThrow(()->Conversion.convertF2C(""));
-        assertDoesNotThrow(()->Conversion.convertC2F(null));
-        assertDoesNotThrow(()->Conversion.convertC2F(""));
-        assertDoesNotThrow(()->Conversion.convertIn2Cm(null));
-        assertDoesNotThrow(()->Conversion.convertIn2Cm(""));
-        assertDoesNotThrow(()->Conversion.convertCm2In(null));
-        assertDoesNotThrow(()->Conversion.convertCm2In(""));
-        assertDoesNotThrow(()->Conversion.convertF2M(null));
-        assertDoesNotThrow(()->Conversion.convertF2M(""));
-        assertDoesNotThrow(()->Conversion.convertM2F(null));
-        assertDoesNotThrow(()->Conversion.convertM2F(""));
+    @DisplayName("1 ounce is 28.35 grams")
+    void ouncesToGrams(){
+        assertEquals(28.35, Conversion.convertOz2G("1"), 0.01);
+    }
+
+    @Test
+    @DisplayName("28.35 grams is 1 ounce")
+    void gramsToOunces(){
+        assertEquals(1, Conversion.convertG2Oz("28.35"), 0.01);
+    }
+
+    @Test
+    @DisplayName("1 kilogram is 2.20 pounds")
+    void kilogramsToPounds(){
+        assertEquals(2.20, Conversion.convertK2Lb("1"), 0.01);
+    }
+
+    @Test
+    @DisplayName("2.20 pounds is 1 kilogram")
+    void poundsToKilograms(){
+        assertEquals(1, Conversion.convertLb2K("2.20"), 0.01);
+    }
+
+    @Test
+    @DisplayName("1 hour is 3600 seconds")
+    void hoursToSeconds(){
+        assertEquals(3600, Conversion.convertH2S("1"), 0.01);
+    }
+
+    @Test
+    @DisplayName("3600 seconds is 1 hour")
+    void secondsToHours(){
+        assertEquals(1, Conversion.convertS2H("3600"), 0.01);
+    }
+
+    /*
+     * Testing rounding
+     */
+    @Test
+    @DisplayName("10.0123 rounds to 10.01")
+    void testRoundingToHundredthPlace() {
+        assertEquals(10.01f, Conversion.RoundFirst("10.0123"), 0.0001);
+    }
+
+    @Test
+    @DisplayName("10.012345 rounds to 10.0123")
+    void testRoundingToTenThousandthsPlace() {
+        assertEquals(10.0123f, Conversion.RoundBack(10.012345f), 0.000001);
+    }
+
+    /*
+     * Testing string handling helper function
+     */
+    @Test
+    @DisplayName("null input defaults to \"0\"")
+    void testStringHandlingNullInput() {
+        assertEquals("0", Conversion.stringInputHandling(null));
+    }
+
+    @Test
+    @DisplayName("non number inputs default to \"0\"")
+    void testStringHandlingNonNumberInput() {
+        assertEquals("0", Conversion.stringInputHandling("$$$"));
+        assertEquals("0", Conversion.stringInputHandling("abcdefg"));
+        assertEquals("0", Conversion.stringInputHandling(""));
+        assertEquals("0", Conversion.stringInputHandling("\"\"''"));
+    }
+
+    /*
+     * Testing empty string, positive infinity, negative infinity, a very small number, and a string with symbols on conversion functions
+     */
+    @ParameterizedTest
+    @DisplayName("conversion functions do not throw a NumberFormatException")
+    @ValueSource(strings = {"", "999999999999999", "-999999999999999", "0.00000000000000001", ".$ =  // ewq[],\\"})
+    void testForNonFloats(String input){
+        assertDoesNotThrow(()->Conversion.convertF2C(input));
+        assertDoesNotThrow(()->Conversion.convertC2F(input));
+        assertDoesNotThrow(()->Conversion.convertIn2Cm(input));
+        assertDoesNotThrow(()->Conversion.convertCm2In(input));
+        assertDoesNotThrow(()->Conversion.convertF2M(input));
+        assertDoesNotThrow(()->Conversion.convertM2F(input));
+        assertDoesNotThrow(()->Conversion.convertM2K(input));
+        assertDoesNotThrow(()->Conversion.convertK2M(input));
+        assertDoesNotThrow(()->Conversion.convertG2L(input));
+        assertDoesNotThrow(()->Conversion.convertL2G(input));
+        assertDoesNotThrow(()->Conversion.convertOz2G(input));
+        assertDoesNotThrow(()->Conversion.convertG2Oz(input));
+        assertDoesNotThrow(()->Conversion.convertK2Lb(input));
+        assertDoesNotThrow(()->Conversion.convertLb2K(input));
+        assertDoesNotThrow(()->Conversion.convertH2S(input));
+        assertDoesNotThrow(()->Conversion.convertS2H(input));
+    }
+
+    /*
+     * Testing null input on conversion functions
+     */
+    @Test
+    @DisplayName("conversion functions do not throw a NullPointerException")
+    void testForNullString(){
         assertDoesNotThrow(()->Conversion.convertM2K(null));
-        assertDoesNotThrow(()->Conversion.convertM2K(""));
+        assertDoesNotThrow(()->Conversion.convertF2C(null));
+        assertDoesNotThrow(()->Conversion.convertC2F(null));
+        assertDoesNotThrow(()->Conversion.convertIn2Cm(null));
+        assertDoesNotThrow(()->Conversion.convertCm2In(null));
+        assertDoesNotThrow(()->Conversion.convertF2M(null));
+        assertDoesNotThrow(()->Conversion.convertM2F(null));
         assertDoesNotThrow(()->Conversion.convertK2M(null));
-        assertDoesNotThrow(()->Conversion.convertK2M(""));
         assertDoesNotThrow(()->Conversion.convertG2L(null));
-        assertDoesNotThrow(()->Conversion.convertG2L(""));
+        assertDoesNotThrow(()->Conversion.convertL2G(null));
+        assertDoesNotThrow(()->Conversion.convertOz2G(null));
+        assertDoesNotThrow(()->Conversion.convertG2Oz(null));
+        assertDoesNotThrow(()->Conversion.convertK2Lb(null));
+        assertDoesNotThrow(()->Conversion.convertLb2K(null));
+        assertDoesNotThrow(()->Conversion.convertH2S(null));
+        assertDoesNotThrow(()->Conversion.convertS2H(null));
     }
 }
