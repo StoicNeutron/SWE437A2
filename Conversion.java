@@ -333,7 +333,7 @@ public void doPost (HttpServletRequest request, HttpServletResponse response)
  * @param str The string argument that holds the float.
  * @return The float rounded to 2 digits past the decimal
  */
-private static float RoundFirst(String str){
+public static float RoundFirst(String str){
    float num1;
    int n;
    num1 = (Float.valueOf(str).floatValue());
@@ -346,25 +346,28 @@ private static float RoundFirst(String str){
  * @param num2 Float input argument
  * @return Float output with 4 decimals
  */
-private static float RoundBack(float num2){
+public static float RoundBack(float num2){
    int n;
    n    = Math.round(num2 * (float)10000.0);
    return (float) (n / (float)10000.0);
 }
 
 /**
- * Helper Function that handling the empty string and NUll input.
+ * Helper Function that handles null and non number string inputs
+ * Called by every conversion function
  * @param inputString of the method.
- * @return newString to avoid program from crushing.
+ * @return original string or default returns "0" upon error
  */
-private static String emptyStringAndNullHandling(String inputString){
-   if(inputString == null){
+public static String stringInputHandling(String inputString){
+   if(inputString == null)
       return "0";
-   }else{
-      if(inputString.isEmpty() || inputString.equalsIgnoreCase(" ")){
-         return "0";
-      }
+
+   try{
+      Float.valueOf(inputString);
+   } catch(NumberFormatException e) {
+      return "0";
    }
+
    return inputString;
 }
 
@@ -375,7 +378,7 @@ private static String emptyStringAndNullHandling(String inputString){
  */
 public static float convertF2C (String FAsStr)
 {
-   FAsStr = emptyStringAndNullHandling(FAsStr);
+   FAsStr = stringInputHandling(FAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(FAsStr);
@@ -393,7 +396,7 @@ public static float convertF2C (String FAsStr)
  */
 public static float convertC2F (String CAsStr)
 {
-   CAsStr = emptyStringAndNullHandling(CAsStr);
+   CAsStr = stringInputHandling(CAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(CAsStr);
@@ -411,7 +414,7 @@ public static float convertC2F (String CAsStr)
  */
 public static float convertIn2Cm (String inAsStr)
 {
-   inAsStr = emptyStringAndNullHandling(inAsStr);
+   inAsStr = stringInputHandling(inAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(inAsStr);
@@ -429,7 +432,7 @@ public static float convertIn2Cm (String inAsStr)
  */
 public static float convertCm2In (String cmAsStr)
 {
-   cmAsStr = emptyStringAndNullHandling(cmAsStr);
+   cmAsStr = stringInputHandling(cmAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(cmAsStr);
@@ -447,7 +450,7 @@ public static float convertCm2In (String cmAsStr)
  */
 public static float convertF2M (String ftAsStr)
 {
-   ftAsStr = emptyStringAndNullHandling(ftAsStr);
+   ftAsStr = stringInputHandling(ftAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(ftAsStr);
@@ -465,7 +468,7 @@ public static float convertF2M (String ftAsStr)
  */
 public static float convertM2F (String mAsStr)
 {
-   mAsStr = emptyStringAndNullHandling(mAsStr);
+   mAsStr = stringInputHandling(mAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(mAsStr);
@@ -483,7 +486,7 @@ public static float convertM2F (String mAsStr)
  */
 public static float convertM2K (String miAsStr)
 {
-   miAsStr = emptyStringAndNullHandling(miAsStr);
+   miAsStr = stringInputHandling(miAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(miAsStr);
@@ -501,7 +504,7 @@ public static float convertM2K (String miAsStr)
  */
 public static float convertK2M (String kmAsStr)
 {
-   kmAsStr = emptyStringAndNullHandling(kmAsStr);
+   kmAsStr = stringInputHandling(kmAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(kmAsStr);
@@ -519,7 +522,7 @@ public static float convertK2M (String kmAsStr)
  */
 public static float convertG2L (String galAsStr)
 {
-   galAsStr = emptyStringAndNullHandling(galAsStr);
+   galAsStr = stringInputHandling(galAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(galAsStr);
@@ -537,6 +540,7 @@ public static float convertG2L (String galAsStr)
  */
 public static float convertL2G (String LAsStr)
 {
+   LAsStr = stringInputHandling(LAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(LAsStr);
@@ -554,6 +558,7 @@ public static float convertL2G (String LAsStr)
  */
 public static float convertOz2G (String ozAsStr)
 {
+   ozAsStr = stringInputHandling(ozAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(ozAsStr);
@@ -571,6 +576,7 @@ public static float convertOz2G (String ozAsStr)
  */
 public static float convertG2Oz (String gAsStr)
 {
+   gAsStr = stringInputHandling(gAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(gAsStr);
@@ -588,6 +594,7 @@ public static float convertG2Oz (String gAsStr)
  */
 public static float convertLb2K (String lbAsStr)
 {
+   lbAsStr = stringInputHandling(lbAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(lbAsStr);
@@ -605,6 +612,7 @@ public static float convertLb2K (String lbAsStr)
  */
 public static float convertK2Lb (String kgAsStr)
 {
+   kgAsStr = stringInputHandling(kgAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(kgAsStr);
@@ -622,6 +630,7 @@ public static float convertK2Lb (String kgAsStr)
  */
 public static float convertH2S (String hrAsString)
 {
+   hrAsString = stringInputHandling(hrAsString);
     float num1, num2;
     num1 = Float.valueOf(hrAsString).floatValue();
     // Convert using unrounded value
@@ -638,6 +647,7 @@ public static float convertH2S (String hrAsString)
  */
 public static float convertS2H (String secAsString)
 {
+   secAsString = stringInputHandling(secAsString);
     float num1, num2;
     num1 = Float.valueOf(secAsString).floatValue();
     // Convert using unrounded value
