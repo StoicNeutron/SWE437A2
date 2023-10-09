@@ -205,4 +205,11 @@ class ConversionTest {
     void testKmPerHourToMilesPerHour3(){
         assertEquals(0, Conversion.kmPerHourToMilesPerHour(-1), 0.01);
     }
+
+    @Test
+    @DisplayName("1 mile per hour is 1.6 km per hour")
+    void testMileToKmPerHour(){
+        assertEquals(1.6, Conversion.mileToKmPerHour(1), 0.01);
+    }
+
 }
