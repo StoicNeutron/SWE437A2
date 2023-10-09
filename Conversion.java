@@ -333,7 +333,7 @@ public void doPost (HttpServletRequest request, HttpServletResponse response)
  * @param str The string argument that holds the float.
  * @return The float rounded to 2 digits past the decimal
  */
-private static float RoundFirst(String str){
+public static float RoundFirst(String str){
    float num1;
    int n;
    num1 = (Float.valueOf(str).floatValue());
@@ -346,10 +346,29 @@ private static float RoundFirst(String str){
  * @param num2 Float input argument
  * @return Float output with 4 decimals
  */
-private static float RoundBack(float num2){
+public static float RoundBack(float num2){
    int n;
    n    = Math.round(num2 * (float)10000.0);
    return (float) (n / (float)10000.0);
+}
+
+/**
+ * Helper Function that handles null and non number string inputs
+ * Called by every conversion function
+ * @param inputString of the method.
+ * @return original string or default returns "0" upon error
+ */
+public static String stringInputHandling(String inputString){
+   if(inputString == null)
+      return "0";
+
+   try{
+      Float.valueOf(inputString);
+   } catch(NumberFormatException e) {
+      return "0";
+   }
+
+   return inputString;
 }
 
 /**
@@ -357,8 +376,9 @@ private static float RoundBack(float num2){
  * @param FAsStr String input for farenheit
  * @return Float output for celsius
  */
-private static float convertF2C (String FAsStr)
+public static float convertF2C (String FAsStr)
 {
+   FAsStr = stringInputHandling(FAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(FAsStr);
@@ -374,8 +394,9 @@ private static float convertF2C (String FAsStr)
  * @param CAsStr String input for celcius
  * @return Float output for farenheit
  */
-private static float convertC2F (String CAsStr)
+public static float convertC2F (String CAsStr)
 {
+   CAsStr = stringInputHandling(CAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(CAsStr);
@@ -391,8 +412,9 @@ private static float convertC2F (String CAsStr)
  * @param inAsStr String input for inches
  * @return Float output for centimeters
  */
-private static float convertIn2Cm (String inAsStr)
+public static float convertIn2Cm (String inAsStr)
 {
+   inAsStr = stringInputHandling(inAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(inAsStr);
@@ -408,8 +430,9 @@ private static float convertIn2Cm (String inAsStr)
  * @param cmAsStr String input for centimeters
  * @return Float output for inches
  */
-private static float convertCm2In (String cmAsStr)
+public static float convertCm2In (String cmAsStr)
 {
+   cmAsStr = stringInputHandling(cmAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(cmAsStr);
@@ -425,8 +448,9 @@ private static float convertCm2In (String cmAsStr)
  * @param ftAsStr String input for feet
  * @return Float output for meters
  */
-private static float convertF2M (String ftAsStr)
+public static float convertF2M (String ftAsStr)
 {
+   ftAsStr = stringInputHandling(ftAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(ftAsStr);
@@ -442,8 +466,9 @@ private static float convertF2M (String ftAsStr)
  * @param mAsStr String input for meters
  * @return Float output for feet
  */
-private static float convertM2F (String mAsStr)
+public static float convertM2F (String mAsStr)
 {
+   mAsStr = stringInputHandling(mAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(mAsStr);
@@ -459,8 +484,9 @@ private static float convertM2F (String mAsStr)
  * @param miAsStr String input for miles
  * @return Float output for kilometers
  */
-private static float convertM2K (String miAsStr)
+public static float convertM2K (String miAsStr)
 {
+   miAsStr = stringInputHandling(miAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(miAsStr);
@@ -476,8 +502,9 @@ private static float convertM2K (String miAsStr)
  * @param kmAsStr String input for kilometers
  * @return Float output for miles
  */
-private static float convertK2M (String kmAsStr)
+public static float convertK2M (String kmAsStr)
 {
+   kmAsStr = stringInputHandling(kmAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(kmAsStr);
@@ -493,8 +520,9 @@ private static float convertK2M (String kmAsStr)
  * @param galAsStr String input for gallons
  * @return Float output for liters
  */
-private static float convertG2L (String galAsStr)
+public static float convertG2L (String galAsStr)
 {
+   galAsStr = stringInputHandling(galAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(galAsStr);
@@ -510,8 +538,9 @@ private static float convertG2L (String galAsStr)
  * @param LAsStr String input for liters
  * @return Float output for gallons
  */
-private static float convertL2G (String LAsStr)
+public static float convertL2G (String LAsStr)
 {
+   LAsStr = stringInputHandling(LAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(LAsStr);
@@ -527,8 +556,9 @@ private static float convertL2G (String LAsStr)
  * @param ozAsStr String input for ounces
  * @return Float output for grams
  */
-private static float convertOz2G (String ozAsStr)
+public static float convertOz2G (String ozAsStr)
 {
+   ozAsStr = stringInputHandling(ozAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(ozAsStr);
@@ -544,8 +574,9 @@ private static float convertOz2G (String ozAsStr)
  * @param gAsStr String input for grams
  * @return Float output for ounches
  */
-private static float convertG2Oz (String gAsStr)
+public static float convertG2Oz (String gAsStr)
 {
+   gAsStr = stringInputHandling(gAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(gAsStr);
@@ -561,8 +592,9 @@ private static float convertG2Oz (String gAsStr)
  * @param lbAsStr String input for pounds
  * @return Float output for kilograms
  */
-private static float convertLb2K (String lbAsStr)
+public static float convertLb2K (String lbAsStr)
 {
+   lbAsStr = stringInputHandling(lbAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(lbAsStr);
@@ -578,8 +610,9 @@ private static float convertLb2K (String lbAsStr)
  * @param kgAsStr String input for kilograms
  * @return Float output for pounds
  */
-private static float convertK2Lb (String kgAsStr)
+public static float convertK2Lb (String kgAsStr)
 {
+   kgAsStr = stringInputHandling(kgAsStr);
    float num1, num2;
    // Round
    num1 = RoundFirst(kgAsStr);
@@ -595,8 +628,9 @@ private static float convertK2Lb (String kgAsStr)
  * @param hrAsString String input for hours
  * @return Float output for seconds
  */
-private static float convertH2S (String hrAsString)
+public static float convertH2S (String hrAsString)
 {
+   hrAsString = stringInputHandling(hrAsString);
     float num1, num2;
     num1 = Float.valueOf(hrAsString).floatValue();
     // Convert using unrounded value
@@ -611,8 +645,9 @@ private static float convertH2S (String hrAsString)
  * @param secAsString String input for seconds
  * @return Float output for hours
  */
-private static float convertS2H (String secAsString)
+public static float convertS2H (String secAsString)
 {
+   secAsString = stringInputHandling(secAsString);
     float num1, num2;
     num1 = Float.valueOf(secAsString).floatValue();
     // Convert using unrounded value
@@ -628,7 +663,7 @@ public static void main(String[] args) {
       System.out.println("Welcome to conversion.java, type help for commands or exit to quit.");
 
       String cmd = "";
-      String[] arguments;
+      String[] tempListArgs;
 
       //default digits to round to
       int decimalDigits = 2;
@@ -638,7 +673,14 @@ public static void main(String[] args) {
 
       //get inputs
       cmd = input.nextLine();
-      arguments = cmd.split(" ");
+      tempListArgs = cmd.split(" ");
+
+      // handling no input value
+      String[] arguments = {"" , ""};
+      arguments[0] = tempListArgs[0];
+      if(tempListArgs.length != 1){
+         arguments[1] = tempListArgs[1];
+      }
 
       switch (arguments[0]) {
       case "help":
