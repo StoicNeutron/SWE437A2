@@ -663,7 +663,10 @@ public static float convertS2H (String secAsString)
  * @return milePerHour value.
  */
 public static double kmPerHourToMilesPerHour(double kmPerHour){
-   return 0.62;
+   double result = 0;
+   // 1 km is 0.6213711922
+   result = kmPerHour * 0.6213711922;
+   return result;
 }
 
 public static void main(String[] args) {
