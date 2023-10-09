@@ -189,14 +189,20 @@ class ConversionTest {
     }
 
     @Test
-    @DisplayName("1 kh/h is 0.62 miles/h")
+    @DisplayName("1 km/h is 0.62 miles/h")
     void testKmPerHourToMilesPerHour(){
         assertEquals(0.62, Conversion.kmPerHourToMilesPerHour(1), 0.01);
     }
 
     @Test
-    @DisplayName("1.6 kh/h is 1 miles/h")
+    @DisplayName("1.6 km/h is 1 miles/h")
     void testKmPerHourToMilesPerHour2(){
         assertEquals(1, Conversion.kmPerHourToMilesPerHour(1.6), 0.01);
+    }
+
+    @Test
+    @DisplayName("negative speed should get 0 result")
+    void testKmPerHourToMilesPerHour3(){
+        assertEquals(0, Conversion.kmPerHourToMilesPerHour(-1), 0.01);
     }
 }
