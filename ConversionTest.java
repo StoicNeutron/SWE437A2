@@ -168,7 +168,6 @@ class ConversionTest {
      * Testing null input on conversion functions
      */
     @Test //Observability is the input we pass in, null, while Controlability is the assert checking no function throws an error.
-    @DisplayName("conversion functions do not throw a NumberFormatException")
     @DisplayName("conversion functions do not throw a NullPointerException")
     void testForNullString(){
         assertDoesNotThrow(()->Conversion.convertM2K(null));
@@ -188,4 +187,11 @@ class ConversionTest {
         assertDoesNotThrow(()->Conversion.convertH2S(null));
         assertDoesNotThrow(()->Conversion.convertS2H(null));
     }
+
+    @Test
+    @DisplayName("1 kh/h is 0.62 miles/h")
+    void testKmPerHourToMilesPerHour(){
+        assertEquals(0.62, Conversion.kmPerHourToMilesPerHour(1));
+    }
+
 }
