@@ -679,6 +679,10 @@ public static double kmPerHourToMilesPerHour(double kmPerHour){
  * @return kmPerHour value.
  */
 public static double mileToKmPerHour(double milePerHour){
+   // special case
+   if(milePerHour <= 0){
+      return 0;
+   }
    double result = 0;
    // 1 mile is 1.609344 km
    result = milePerHour * 1.609344;
