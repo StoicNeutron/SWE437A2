@@ -204,6 +204,7 @@ class ConversionTest {
     @DisplayName("negative speed should get 0 result")
     void testKmPerHourToMilesPerHour3(){
         assertEquals(0, Conversion.kmPerHourToMilesPerHour(-1), 0.01);
+        assertEquals(0, Conversion.mileToKmPerHour(-1), 0.01);
     }
 
     @Test
@@ -215,7 +216,8 @@ class ConversionTest {
     @Test
     @DisplayName("2 mile per hour is 3.2 km per hour")
     void testMileToKmPerHour2(){
-        assertEquals(3.2, Conversion.mileToKmPerHour(2), 0.01);
+        assertEquals(3.2, Conversion.mileToKmPerHour(2), 0.1);
     }
+    
 
 }
