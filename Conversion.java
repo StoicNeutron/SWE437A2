@@ -668,7 +668,7 @@ public static double kmPerHourToMilesPerHour(double kmPerHour){
       return 0;
    }
    double result = 0;
-   // 1 km is 0.6213711922
+   // 1 km is 0.6213711922 mile
    result = kmPerHour * 0.6213711922;
    return result;
 }
@@ -679,7 +679,10 @@ public static double kmPerHourToMilesPerHour(double kmPerHour){
  * @return kmPerHour value.
  */
 public static double mileToKmPerHour(double milePerHour){
-   return 1.6;
+   double result = 0;
+   // 1 mile is 1.609344 km
+   result = milePerHour * 1.609344;
+   return result;
 }
 
 public static void main(String[] args) {
