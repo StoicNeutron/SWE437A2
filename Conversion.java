@@ -673,6 +673,15 @@ public static double kmPerHourToMilesPerHour(double kmPerHour){
    return result;
 }
 
+/*
+ * Convert Miles per hour to Kilometer per hour.
+ * @param milePerHour value.
+ * @return kmPerHour value.
+ */
+public static double mileToKmPerHour(double milePerHour){
+   return 1.6;
+}
+
 public static void main(String[] args) {
       Scanner input = new Scanner(System.in);
 
