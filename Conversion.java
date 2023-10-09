@@ -657,6 +657,15 @@ public static float convertS2H (String secAsString)
     return(num2);
 }
 
+/**
+ * Convert Kilometer per hour to Miles per hour.
+ * @param kmPerHour value.
+ * @return milePerHour value.
+ */
+public static double kmPerHourToMilesPerHour(double kmPerHour){
+   return 0.62;
+}
+
 public static void main(String[] args) {
       Scanner input = new Scanner(System.in);
 
