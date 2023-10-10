@@ -196,57 +196,62 @@ class ConversionTest {
     @Test
     @DisplayName("1 km/h is 0.62 miles/h")
     void testKmPerHourToMilesPerHour(){
-        assertEquals(0.62, Conversion.kmPerHourToMilesPerHour(1), 0.01);
+        assertEquals(0.62, Conversion.kmPerHourToMilesPerHour("1"), 0.01);
     }
 
     @Test
     @DisplayName("1.6 km/h is 1 miles/h")
     void testKmPerHourToMilesPerHour2(){
-        assertEquals(1, Conversion.kmPerHourToMilesPerHour(1.6), 0.01);
+        assertEquals(1, Conversion.kmPerHourToMilesPerHour("1.6"), 0.01);
     }
 
     @Test
     @DisplayName("negative speed should get 0 result")
     void testKmPerHourToMilesPerHour3(){
-        assertEquals(0, Conversion.kmPerHourToMilesPerHour(-1), 0.01);
-        assertEquals(0, Conversion.mileToKmPerHour(-1), 0.01);
+        assertEquals(0, Conversion.kmPerHourToMilesPerHour("-1"), 0.01);
+        assertEquals(0, Conversion.mileToKmPerHour("-1"), 0.01);
     }
 
     @Test
     @DisplayName("1 mile per hour is 1.6 km per hour")
     void testMileToKmPerHour(){
-        assertEquals(1.6, Conversion.mileToKmPerHour(1), 0.01);
+        assertEquals(1.6, Conversion.mileToKmPerHour("1"), 0.01);
     }
 
     @Test
     @DisplayName("2 mile per hour is 3.2 km per hour")
     void testMileToKmPerHour2(){
-        assertEquals(3.2, Conversion.mileToKmPerHour(2), 0.1);
+        assertEquals(3.2, Conversion.mileToKmPerHour("2"), 0.1);
     }
 
     @Test
     @DisplayName("0 kelvin is -273.15 celsius")
     void testKelvinToCelcius(){
-        assertEquals(-273.15, Conversion.kelvinToCelcius(0), 0.01);
+        assertEquals(-273.15, Conversion.convertK2C("0"), 0.01);
     }
 
     @Test
     @DisplayName("100 kelvin is -173.15 celsius")
     void testKelvinToCelcius2(){
-        assertEquals(-173.15, Conversion.kelvinToCelcius(100), 0.01);
+        assertEquals(-173.15, Conversion.convertK2C("100"), 0.01);
+    }
+
+    @Test
+    @DisplayName("100 celcius is 373.15 kelvin")
+    void testCelciusToKelvin(){
+        assertEquals(373.15, Conversion.convertC2K("100"), 0.01);
+    }
+
+    @Test
+    @DisplayName("-400 celcius will return 0 kelvin")
+    void testTooLowCelcius(){
+        assertEquals(0, Conversion.convertC2K("-400"), 0.01);
     }
     
     @Test
-    @DisplayName("Kelvin values cannot be negative")
+    @DisplayName("negative kelvin will return the lowest temperature possible in Celcius")
     void testKelvinToCelcius3(){
-        boolean caughtIllegalArgException = false;
-        try {
-            Conversion.kelvinToCelcius(-1);
-        }
-        catch (IllegalArgumentException e) {
-            caughtIllegalArgException = true;
-        }
-        assertTrue(caughtIllegalArgException);
+        assertEquals(-273.15, Conversion.convertK2C("-1"), 0.01);
     }
 
 }
