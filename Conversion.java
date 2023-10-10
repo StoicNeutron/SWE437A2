@@ -353,6 +353,17 @@ public static float RoundBack(float num2){
 }
 
 /**
+ * Takes a double and rounds it to 4 decimals
+ * @param num2 Double input argument
+ * @return Double output with 4 decimals
+ */
+public static double RoundBack(double num2){
+   long n;
+   n    = Math.round(num2 * (double)10000.0);
+   return (double) (n / (double)10000.0);
+}
+
+/**
  * Helper Function that handles null and non number string inputs
  * Called by every conversion function
  * @param inputString of the method.
@@ -689,6 +700,31 @@ public static double mileToKmPerHour(double milePerHour){
    return result;
 }
 
+/*
+ * Convert degrees Kelvin to degrees Celcius.
+ * @param kelvin value.
+ * @return celcius value.
+ */
+public static double kelvinToCelcius(double kelvin) {
+    if (kelvin < 0) {
+        throw new IllegalArgumentException();
+    }
+    else {
+        return kelvin - 273.15;
+    }
+}
+
+public static double convertK2C(String kelvinAsString){
+    kelvinAsString = stringInputHandling(kelvinAsString);
+    double num1, num2;
+    num1 = Double.valueOf(kelvinAsString).doubleValue();
+    // Convert using unrounded value
+    num2 = (double) kelvinToCelcius(num1);
+    // Round
+    num2 = RoundBack(num2);
+    return(num2);
+}
+
 public static void main(String[] args) {
       Scanner input = new Scanner(System.in);
 
@@ -733,6 +769,7 @@ public static void main(String[] args) {
          System.out.println("K2Lb # - Kilograms to Pounds");
          System.out.println("H2S # - Hours to Seconds");
          System.out.println("S2H # - Seconds to Hours");
+         System.out.println("K2C # - Kelvin to Celcius");
          System.out.println("exit - Quit the program");
          System.out.println("\nAdditional options:");
          System.out.println("decimal # - Set the number of digits past decimal point in result [0-4]");
@@ -784,6 +821,9 @@ public static void main(String[] args) {
          break;
       case "S2H":
          System.out.printf("%." + decimalDigits + "f\n", convertS2H(arguments[1]));
+         break;
+      case "K2C":
+         System.out.printf("%." + decimalDigits + "f\n", convertK2C(arguments[1]));
          break;
       case "exit":
          System.out.println("Exiting the program.");

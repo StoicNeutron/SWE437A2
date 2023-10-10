@@ -1,5 +1,10 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.lang.reflect.Executable;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -218,6 +223,30 @@ class ConversionTest {
     void testMileToKmPerHour2(){
         assertEquals(3.2, Conversion.mileToKmPerHour(2), 0.1);
     }
+
+    @Test
+    @DisplayName("0 kelvin is -273.15 celsius")
+    void testKelvinToCelcius(){
+        assertEquals(-273.15, Conversion.kelvinToCelcius(0), 0.01);
+    }
+
+    @Test
+    @DisplayName("100 kelvin is -173.15 celsius")
+    void testKelvinToCelcius2(){
+        assertEquals(-173.15, Conversion.kelvinToCelcius(100), 0.01);
+    }
     
+    @Test
+    @DisplayName("Kelvin values cannot be negative")
+    void testKelvinToCelcius3(){
+        boolean caughtIllegalArgException = false;
+        try {
+            Conversion.kelvinToCelcius(-1);
+        }
+        catch (IllegalArgumentException e) {
+            caughtIllegalArgException = true;
+        }
+        assertTrue(caughtIllegalArgException);
+    }
 
 }
