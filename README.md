@@ -20,11 +20,11 @@
   <li>Open test file, right click then click run test.</li>
 </ol>
 
+<h6>Compiling in a terminal</h6>
+<p>Use the following command in the directory of the folder:<br>
+<code>javac Conversion.java -cp junit-platform-console-standalone-1.10.0.jar; .\ConversionTest.java</code><br>
+This will compile the Conversion class and its tests with JUnit.</p>
+
 <p>This is a repository for classroom use only. 
   This repository has been granted the permission by the instructor to set and made availiable as public. 
   Anyone except the name listed above: Using any code from this repository can potentially end up with Honor Code and Academic Integrity violations.</p>
-
-<h6>Compile instructions</h6>
-<p>Use the following command
-<code>javac Conversion.java -cp junit-platform-console-standalone-1.10.0.jar; .\ConversionTest.java</code>
-to compile the Conversion class and its tests using the JUnit jar file.</p>
