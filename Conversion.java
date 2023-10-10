@@ -673,56 +673,71 @@ public static float convertS2H (String secAsString)
  * @param kmPerHour value.
  * @return milePerHour value.
  */
-public static double kmPerHourToMilesPerHour(double kmPerHour){
-   // special case
-   if(kmPerHour <= 0){
-      return 0;
-   }
-   double result = 0;
-   // 1 km is 0.6213711922 mile
-   result = kmPerHour * 0.6213711922;
-   return result;
+public static float kmPerHourToMilesPerHour(String kmAsString){
+   kmAsString = stringInputHandling(kmAsString);
+   float num1, num2;
+   num1 = Float.valueOf(kmAsString).floatValue();
+   // Convert using unrounded value
+   // resulting output should not be negative
+   num2 = (float) Math.max(0, num1 * 0.6213711922);
+   // Back to 2 digits
+   num2 = RoundBack(num2);
+   return(num2);
 }
 
-/*
+/**
  * Convert Miles per hour to Kilometer per hour.
  * @param milePerHour value.
  * @return kmPerHour value.
  */
-public static double mileToKmPerHour(double milePerHour){
-   // special case
-   if(milePerHour <= 0){
-      return 0;
-   }
-   double result = 0;
-   // 1 mile is 1.609344 km
-   result = milePerHour * 1.609344;
-   return result;
+public static float mileToKmPerHour(String mileAsString){
+   mileAsString = stringInputHandling(mileAsString);
+   float num1, num2;
+   num1 = Float.valueOf(mileAsString).floatValue();
+   // Convert using unrounded value
+   // resulting output should not be negative
+   num2 = (float) Math.max(0, num1 * 1.609344);
+   // Back to 2 digits
+   num2 = RoundBack(num2);
+   return(num2);
 }
 
-/*
- * Convert degrees Kelvin to degrees Celcius.
+/**
+ * Convert Kelvin to degrees Celcius.
  * @param kelvin value.
  * @return celcius value.
  */
-public static double kelvinToCelcius(double kelvin) {
-    if (kelvin < 0) {
-        throw new IllegalArgumentException();
-    }
-    else {
-        return kelvin - 273.15;
-    }
+public static float convertK2C(String kelvinAsString) {
+   kelvinAsString = stringInputHandling(kelvinAsString);
+   float num1, num2;
+   num1 = Float.valueOf(kelvinAsString).floatValue();
+
+   // Convert using unrounded value
+   //temperature cannot be lower than -273.15 celcius
+   num1 = Math.max(0, num1);
+   num2 = (float) (num1 - 273.15);
+   // Back to 2 digits
+   num2 = RoundBack(num2);
+   return(num2);
 }
 
-public static double convertK2C(String kelvinAsString){
-    kelvinAsString = stringInputHandling(kelvinAsString);
-    double num1, num2;
-    num1 = Double.valueOf(kelvinAsString).doubleValue();
-    // Convert using unrounded value
-    num2 = (double) kelvinToCelcius(num1);
-    // Round
-    num2 = RoundBack(num2);
-    return(num2);
+/**
+ * Convert degrees Celcius to kelvin
+ * @param celcius value.
+ * @return kelvin value.
+ */
+public static float convertC2K(String celciusAsString) {
+   celciusAsString = stringInputHandling(celciusAsString);
+   float num1, num2;
+   num1 = Float.valueOf(celciusAsString).floatValue();
+
+   // Convert using unrounded value
+   // input celcius cannot be lower than -273.15
+   num1 = Math.max((float) -273.15, num1);
+   num2 = (float) Math.max(0, (num1 + 273.15));
+   // Back to 2 digits
+   num2 = RoundBack(num2);
+   return(num2);
 }
 
 public static void main(String[] args) {
